@@ -1,0 +1,51 @@
+<div>
+  <!-- Chatbot Button (Floating) -->
+  <button
+    (click)="toggleChat()"
+    class="fixed bottom-5 right-5 bg-blue-400 text-white p-2.5 rounded-full shadow-lg hover:bg-blue-500"
+  >
+    <img src="./png/bot.png" width="50" />
+  </button>
+
+  <!-- Chat Window (Initially Hidden) -->
+  <div
+    *ngIf="isChatOpen"
+    class="fixed bottom-5 right-5 bg-white shadow-lg rounded-lg p-4 h-130 w-110"
+    id="chatWindow"
+  >
+    <div class="flex justify-between items-center">
+      <button (click)="toggleChat()" class="text-red-500 rounded-lg">
+        <img src="./svg/down.svg" width="15" />
+      </button>
+      <h3 class="text-lg font-semibold">Chat</h3>
+    </div>
+
+    <!-- Chat Messages -->
+    <div class="h-110 p-4 overflow-y-auto space-y-4">
+      <div class="flex justify-start">
+        <div class="bg-gray-200 p-3 m-2 rounded-lg max-w-xs">
+          <div>
+            Please Select A Language <br />
+            <button
+              id="LangEng"
+              class="bg-blue-500 text-white px-3 m-1 mt-2 py-1 rounded"
+            >
+              English
+            </button>
+            <button
+              id="LangGuj"
+              class="bg-blue-500 text-white px-3 m-1 py-1 rounded"
+            >
+              ગુજરાતી
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="">
+        <ng-container *ngIf="appServices.SelectedLanguage === 1">
+          <app-english-main></app-english-main>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
