@@ -19,6 +19,7 @@ import { OffCampusComponent } from './off-campus/off-campus.component';
 })
 export class ExtensionComponent {
   extensionEducationService = inject(ExtensionEducationService);
+  appService = inject(AppServiceService);
   zone = inject(NgZone);
   cdRef = inject(ChangeDetectorRef);
   showAll = 0;
@@ -51,16 +52,25 @@ export class ExtensionComponent {
 
     switch (buttonId) {
       case 'ShowAll':
+        if(this.showAnandCampus || this.showOffCampus){
+          this.appService.messages.pop();
+        }
         this.showAll = 1;
         this.showOffCampus = 0;
         this.showAnandCampus = 0;
         break;
         case 'ShowAnandCampus':
+          if(this.showAll || this.showOffCampus){
+            this.appService.messages.pop();
+          }
           this.showAll = 0;
           this.showOffCampus = 0;
           this.showAnandCampus = 1;
         break;
         case 'ShowOffCampus':
+          if(this.showAnandCampus || this.showAll){
+            this.appService.messages.pop();
+          }
           this.showAll = 0;
           this.showOffCampus = 1;
           this.showAnandCampus = 0;

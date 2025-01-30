@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { OffCampusService } from '../../../../Service/English/ExtensonEducation/OffCapus/off-campus.service';
 
 @Component({
   selector: 'app-off-campus',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './off-campus.component.css'
 })
 export class OffCampusComponent {
+showOffCampusService = inject(OffCampusService);
 
+constructor(){
+  this.showOffCampusService.loadExtensionOffCampus();
+}
 }
