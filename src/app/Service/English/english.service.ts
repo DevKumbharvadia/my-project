@@ -3,10 +3,9 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { AppServiceService } from '../app-service.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EnglishService {
-
   constructor(
     private appServices: AppServiceService,
     private sanitizer: DomSanitizer
@@ -19,7 +18,7 @@ export class EnglishService {
          <button id="Admission-button" class="bg-blue-500 text-white px-3 m-1 mt-2 py-1 rounded">Admission</button>
          <button id="ExtensionEducation-button" class="bg-green-500 text-white px-3 m-1 py-1 rounded">Extension Education</button>
          <button id="Research-button" class="bg-red-500 text-white px-3 m-1 py-1 rounded">Research</button>`
-      )
+      ),
     ];
   }
 
@@ -35,20 +34,6 @@ export class EnglishService {
     );
   }
 
-  loadExtensionData() {
-    this.appServices.messages.push(
-      this.sanitizer.bypassSecurityTrustHtml(
-        `<h3 class="m-1">Extension Education</h3>
-         <iframe
-           src="https://www.youtube.com/embed/3NeHmBg7cmA"
-           title="Extension Education Video"
-           frameborder="0"
-           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-           allowfullscreen>
-         </iframe>`
-      )
-    );
-  }
 
   loadResearchData() {
     this.appServices.messages.push(
@@ -63,7 +48,7 @@ export class EnglishService {
     );
   }
 
-  loadAitData(){
+  loadAitData() {
     this.appServices.messages.push(
       this.sanitizer.bypassSecurityTrustHtml(
         `<a href="https://drive.google.com/file/d/1xYoiS9HjDJgyc9qAYN4lRT_DooEEmhPg/view?usp=drive_link" class="bg-blue-500 text-white px-3 py-1 rounded" download>
@@ -72,5 +57,4 @@ export class EnglishService {
       )
     );
   }
-
 }

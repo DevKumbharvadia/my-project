@@ -1,5 +1,12 @@
 import { NgFor, NgIf, NgStyle } from '@angular/common';
-import { ChangeDetectorRef, Component, ElementRef, inject, NgZone, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  inject,
+  NgZone,
+  ViewChild,
+} from '@angular/core';
 import { AppServiceService } from '../../../Service/app-service.service';
 import { EnglishMainComponent } from '../../English/english-main.component';
 
@@ -20,15 +27,16 @@ export class BotUiComponent {
 
   // Track resizing direction
   resizing = false;
-  currentEdge: string = '';  // Will store which edge is being dragged
+  currentEdge: string = ''; // Will store which edge is being dragged
 
   @ViewChild('chatWindow', { static: false }) chatWindow!: ElementRef;
 
-
-  constructor(private cdRef: ChangeDetectorRef, private zone: NgZone) {}
+  constructor(private cdRef: ChangeDetectorRef, private zone: NgZone) {
+  }
 
   toggleChat() {
     this.isChatOpen = !this.isChatOpen;
+    this.appServices.SelectedLanguage = 0;
   }
 
   ngAfterViewInit(): void {
